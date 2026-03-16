@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('tableros', function (Blueprint $table) {
+           $table->id('id_tableros');
+           $table->string('titulo', 50);
+           $table->string('fondo')->nullable();
+   
+           $table->foreignId('id_espacio')->constrained('espacios', 'id_espacio');
+           $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('tableros');
+    }
+};
