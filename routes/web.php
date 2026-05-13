@@ -31,6 +31,10 @@ Route::get('/perfil', function () {
     return view('perfil');
 })->name('perfil');
 
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome')->middleware('auth');
+
 Route::get('/login', [Auth_Controller::class, 'showLogin'])->name('Login');
 Route::post('/login', [Auth_Controller::class, 'login']);
 Route::post('/register', [Auth_Controller::class, 'register'])->name('register');

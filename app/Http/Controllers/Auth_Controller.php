@@ -17,14 +17,15 @@ class Auth_Controller extends Controller
     // Procesa el inicio de sesión
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+       $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard'); // Cambia 'dashboard' por tu ruta principal
+            // Cambiar 'dashboard' por la ruta que desees, o usar redirect('/')
+            return redirect()->route('welcome'); 
         }
 
         return back()->withErrors([

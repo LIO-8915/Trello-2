@@ -80,17 +80,7 @@
     <div class="d-flex justify-content-center align-items-center min-vh-100">
         <div class="card shadow-lg border-0" style="width: 22rem; background-color: rgb(28, 28, 28);">
             <div class="card-body p-4">
-                @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                @endif
-
-                @if ($errors->any())
-                    <div class="alert alert-error">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </div>
-                @endif
+               
 
 
                 <div class="text-center mb-4">
@@ -107,7 +97,7 @@
                         
                         <div class="mb-3">
                             <label class="form-label" style="color:  rgb(161, 161, 161);">Contraseña</label>
-                            <input type="password" class="form-control" placeholder="••••••••" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(161, 161, 161);" required>
+                            <input type="password" class="form-control" placeholder="••••••••" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(255, 255, 255);" required>
                         </div>
 
                         <button type="submit" class="btn btn-outline-primary w-100 py-2">Iniciar sesion</button>
