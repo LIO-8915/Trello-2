@@ -14,6 +14,11 @@ use App\Http\Controllers\Auth_Controller;
 |
 */
 
+Route::get('/login', [Auth_Controller::class, 'showLogin'])->name('Login');
+Route::post('/login', [Auth_Controller::class, 'login']);
+Route::post('/logout', [Auth_Controller::class, 'logout'])->name('logout');
+Route::post('/register', [Auth_Controller::class, 'register'])->name('register');
+
 Route::get('/', function () {
     return view('login');
 })->name('home'); 
@@ -36,8 +41,8 @@ Route::get('/welcome', function () {
 
 Route::get('/login', [Auth_Controller::class, 'showLogin'])->name('Login');
 Route::post('/login', [Auth_Controller::class, 'login']);
-Route::post('/register', [Auth_Controller::class, 'register'])->name('register');
 Route::post('/logout', [Auth_Controller::class, 'logout'])->name('logout');
+Route::post('/register', [Auth_Controller::class, 'register'])->name('register');
 
 // Route::get('/config', function () {
 //     return view('config');

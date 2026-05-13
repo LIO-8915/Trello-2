@@ -91,16 +91,16 @@
                 <div id="login-section">
                     <form action="{{ route('Login') }}" method="POST">
                         @csrf <div class="mb-3">
-                            <label class="form-label" style="color:  rgb(161, 161, 161);">Usuario</label>
-                            <input type="email" class="form-control" placeholder="Nombre de usuario" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(255, 255, 255);" required>
+                            <label class="form-label" style="color: rgb(161, 161, 161);">Correo Electrónico</label>
+                            <input type="email" name="email" class="form-control" placeholder="correo@ejemplo.com" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color: white;" required>
                         </div>
                         
                         <div class="mb-3">
-                            <label class="form-label" style="color:  rgb(161, 161, 161);">Contraseña</label>
-                            <input type="password" class="form-control" placeholder="••••••••" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(255, 255, 255);" required>
+                            <label class="form-label" style="color: rgb(161, 161, 161);">Contraseña</label>
+                            <input type="password" name="password" class="form-control" placeholder="••••••••" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color: white;" required>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-primary w-100 py-2">Iniciar sesion</button>
+                        <button type="submit" class="btn btn-outline-primary w-100 py-2">Iniciar sesión</button>
                     </form>
                     
                     <div class="text-center mt-3">
