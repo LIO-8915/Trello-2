@@ -18,7 +18,6 @@ Route::get('/', function () {
     return view('login');
 })->name('home'); 
 
-
 Route::get('/login', function () {
     return view('Login');
 })->name('Login');
