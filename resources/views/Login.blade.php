@@ -100,9 +100,9 @@
                 </div>
                 <div id="login-section">
                     <form action="{{ route('Login') }}" method="POST">
-                        <div class="mb-3">
+                        @csrf <div class="mb-3">
                             <label class="form-label" style="color:  rgb(161, 161, 161);">Usuario</label>
-                            <input type="text" class="form-control" placeholder="Nombre de usuario" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(255, 255, 255);" required>
+                            <input type="email" class="form-control" placeholder="Nombre de usuario" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(255, 255, 255);" required>
                         </div>
                         
                         <div class="mb-3">

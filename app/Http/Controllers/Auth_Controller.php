@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class Auth_Controller extends Controller
 {
     // Muestra la vista de login
     public function showLogin()

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth_Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +31,10 @@ Route::get('/perfil', function () {
     return view('perfil');
 })->name('perfil');
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('Login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/login', [Auth_Controller::class, 'showLogin'])->name('Login');
+Route::post('/login', [Auth_Controller::class, 'login']);
+Route::post('/register', [Auth_Controller::class, 'register'])->name('register');
+Route::post('/logout', [Auth_Controller::class, 'logout'])->name('logout');
 
 // Route::get('/config', function () {
 //     return view('config');
