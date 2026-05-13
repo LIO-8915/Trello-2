@@ -44,7 +44,12 @@ class User extends Authenticatable
     ];
     protected $primaryKey = 'id_usuario';
 
-  
+    public function tableros()
+    {
+        return $this->belongsToMany(Tablero::class, 'tablero_usuario', 'id_usuario', 'id_tablero')
+                    ->withPivot('rol')
+                    ->withTimestamps();
+    }
 
     public function espacios()
     {

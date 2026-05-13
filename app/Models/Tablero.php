@@ -19,4 +19,10 @@ class Tablero extends Model
     {
         return $this->hasMany(Lista::class, 'id_tableros', 'id_tableros');
     }
+    public function participantes()
+    {
+        return $this->belongsToMany(User::class, 'tablero_usuario', 'id_tablero', 'id_usuario')
+                    ->withPivot('rol')
+                    ->withTimestamps();
+    }
 }

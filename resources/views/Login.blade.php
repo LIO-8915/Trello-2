@@ -1,6 +1,7 @@
 {{-- resources/views/login.blade.php --}}
 <!DOCTYPE html>
 <html lang="es">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,51 +12,166 @@
     <style>
         body {
             background: linear-gradient(135deg, #000000 0%, #0a1536 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, "Fira Sans", "Droid Sans", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
+        .logo-container {
+            margin-bottom: 40px;
+            font-size: 45px;
+            font-weight: bold;
+            color: #172b4d;
+            display: flex;
+            align-items: center;
+        }
+        .logo-container i { color: #0079bf; margin-right: 10px; }       
+        .auth-card {
+            background: #ffffff;
+            padding: 25px 40px;
+            border-radius: 3px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+            width: 400px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        h1 { color: #5e6c84; font-size: 16px; margin-bottom: 25px; font-weight: bold; }      
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #dfe1e6;
+            border-radius: 3px;
+            background-color: #fafbfc;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input:focus { outline: none; border-color: #4c9aff; background-color: #ffffff; }    
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            background-color: #5aac44;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .btn-primary:hover { background-color: #61bd4f; }     
+        .footer-links {
+            margin-top: 20px;
+            border-top: 1px solid #dfe1e6;
+            padding-top: 20px;
+            font-size: 14px;
+        }
+        .footer-links a { color: #0052cc; text-decoration: none; cursor: pointer; }
+        .footer-links a:hover { text-decoration: underline; }
+        .alert { padding: 10px; font-size: 13px; border-radius: 3px; margin-bottom: 15px; text-align: left; }
+        .alert-danger { background: #ffebe6; color: #bf2600; border: 1px solid #ffbdad; }
+        .alert-success { background: #e3fcef; color: #006644; border: 1px solid #abf5d1; }
     </style>
 </head>
 <body>
     <div class="d-flex justify-content-center align-items-center min-vh-100">
         <div class="card shadow-lg border-0" style="width: 22rem; background-color: rgb(28, 28, 28);">
             <div class="card-body p-4">
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-error">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
+
+
                 <div class="text-center mb-4">
                     <i class="bi bi-kanban fs-1 text-primary"></i>
-                    <h2 class="mt-2" style="color:  rgb(161, 161, 161);">Trello.2</h2>
-                    <p style="color:  rgb(161, 161, 161);">Inicia sesión en tu cuenta</p>
+                    <h2 class="mt-2" style="color:  rgb(161, 161, 161);"><i class="fab fa-trello"></i> Trello 2</h2>
+                    <p style="color:  rgb(161, 161, 161);">Log in to Trello 2</p>
                 </div>
-                
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label" style="color:  rgb(161, 161, 161);">Usuario</label>
-                        <input type="text" class="form-control" placeholder="Nombre de usuario" style="background-color: rgb(21, 21, 21); border-color: transparent; color:  rgb(161, 161, 161);">
+                <div id="login-section">
+                    <form action="{{ route('Login') }}" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label" style="color:  rgb(161, 161, 161);">Usuario</label>
+                            <input type="text" class="form-control" placeholder="Nombre de usuario" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(255, 255, 255);" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label" style="color:  rgb(161, 161, 161);">Contraseña</label>
+                            <input type="password" class="form-control" placeholder="••••••••" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(161, 161, 161);" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary w-100 py-2">Iniciar sesion</button>
+                    </form>
+                    
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-decoration-none" style="color: rgb(114, 114, 114); ;">¿Olvidaste tu contraseña?</a>
                     </div>
                     
-                    <div class="mb-3">
-                        <label class="form-label" style="color:  rgb(161, 161, 161);">Contraseña</label>
-                        <input type="password" class="form-control" placeholder="••••••••" style="background-color: rgb(21, 21, 21); border-color: transparent; color:  rgb(161, 161, 161);">
-                    </div>
+                    <hr class="my-4">
                     
-                   
+                    <div class="text-center">
+                        <span style="color:  rgb(161, 161, 161);">¿No tienes cuenta?</span>
+                        <a href="#" class="text-decoration-none ms-1" onclick="toggleAuth()">Regístrate</a>    
+                    </div>
 
-                    <button type="submit" class="btn btn-outline-primary w-100 py-2">Iniciar sesion</button>
-                </form>
-                
-                <div class="text-center mt-3">
-                    <a href="#" class="text-decoration-none" style="color: rgb(114, 114, 114); ;">¿Olvidaste tu contraseña?</a>
-                </div>
-                
-                <hr class="my-4">
-                
-                <div class="text-center">
-                    <span style="color:  rgb(161, 161, 161);">¿No tienes cuenta?</span>
-                    <a href="#" class="text-decoration-none ms-1">Regístrate</a>    
+                    <div class="text-center">
+                        <a href="{{ route('home') }}" class="text-decoration-none ms-1">IGNORAR</a>
+                    </div>
                 </div>
 
-                <div class="text-center">
-                    <a href="{{ route('home') }}" class="text-decoration-none ms-1">IGNORAR</a>
+                <div id="register-section" style="display: none;">
+                    <h2 class="mt-2" style="color:  rgb(161, 161, 161);">Crear Cuenta</h2>
+                    <form action="{{ route('register') }}" method="POST">
+                        @csrf
+                        <input type="text" type="text" class="form-control" placeholder="Nombre completo" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(161, 161, 161);" required>
+                        <input type="email" type="text" class="form-control" placeholder="Correo electrónico" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(161, 161, 161);" required>
+                        <input type="password" type="password" class="form-control"placeholder="Contraseña (mín. 8 caracteres)" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(161, 161, 161);" required>
+                        <input type="password" class="form-control" placeholder="Confirmar contraseña" style="background-color: rgba(220, 220, 220, 0.33); border-color: transparent; color:  rgb(161, 161, 161);" required>
+                        <button type="submit" class="btn btn-outline-primary w-100 py-2">Registrarse y Volver</button>
+                    </form>
+
+                    <hr class="my-4">
+
+                    <div class="toggle-link" >
+                        <div class="text-center">
+                            <a onclick="toggleAuth()" class="text-decoration-none ms-1">¿Ya tienes cuenta? Inicia sesión</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleAuth() {
+            const loginSec = document.getElementById('login-section');
+            const registerSec = document.getElementById('register-section');
+            
+            if (loginSec.style.display === "none") {
+                loginSec.style.display = "block";
+                registerSec.style.display = "none";
+            } else {
+                loginSec.style.display = "none";
+                registerSec.style.display = "block";
+            }
+        }
+
+        // Si hubo un error de validación en el registro, mantener visible la sección de registro
+        @if ($errors->has('name') || $errors->has('password_confirmation'))
+            toggleAuth();
+        @endif
+    </script>
+
+
 </body>
 </html>
